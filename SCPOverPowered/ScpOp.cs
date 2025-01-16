@@ -7,7 +7,7 @@ public class ScpOp : Plugin<OpConfig>
 {
     public override string Author => "Dashtiss";
     public override string Name => "Scp Over Powered";
-    public override string Prefix => "ScpOp";
+    public override string Prefix => "ScpOP";
     public override Version RequiredExiledVersion => new(9, 3, 0);
     public override Version Version => new(1, 0, 0);
 
