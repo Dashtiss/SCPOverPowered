@@ -12,20 +12,22 @@ public class ScpOp : Plugin<OpConfig>
     public override Version Version => new(1, 0, 0);
 
     public static ScpOp Instance { get; private set; } = null!;
-    
-    private EventHandlers eventHandlers = null!;
+
+    private EventHandlers Handlers { get; set; } = null!;
+
+    public Player Scp035 { get; set; } = null!;
     
     public override void OnEnabled()
     {
         Instance = this;
         
-        eventHandlers = new EventHandlers();
+        Handlers = new EventHandlers();
         
         Config.LoadItems();
         
         CustomItem.RegisterItems(overrideClass: Config.ItemConfigs);
         
-        Server.ReloadedConfigs += eventHandlers.OnReloadingConfigs;
+        Server.ReloadedConfigs += EventHandlers.OnReloadingConfigs;
         
         base.OnEnabled();
     }
@@ -35,7 +37,7 @@ public class ScpOp : Plugin<OpConfig>
         CustomItem.UnregisterItems();
         
         Instance = null!;
-        Server.ReloadedConfigs -= eventHandlers.OnReloadingConfigs;
+        Server.ReloadedConfigs -= EventHandlers.OnReloadingConfigs;
         
         base.OnDisabled();
     }

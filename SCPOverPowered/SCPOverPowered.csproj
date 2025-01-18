@@ -1,29 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net4.8</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <!-- NuGet Packages -->
     <ItemGroup>
-      <PackageReference Include="ExMod.Exiled" Version="9.3.0" />
-      <PackageReference Include="System.Collections" Version="4.3.0" />
+        <PackageReference Include="ExMod.Exiled" Version="9.3.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Reference Include="Assembly-CSharp">
-        <HintPath>..\..\..\Documents\SCPRefrences\Assembly-CSharp.dll</HintPath>
-      </Reference>
-      <Reference Include="Assembly-CSharp-firstpass">
-        <HintPath>..\..\..\Documents\SCPRefrences\Assembly-CSharp-firstpass.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine">
-        <HintPath>..\..\..\Documents\SCPRefrences\UnityEngine.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.CoreModule">
-        <HintPath>..\..\..\Documents\SCPRefrences\UnityEngine.CoreModule.dll</HintPath>
-      </Reference>
+    <!-- Imported Mac References -->
+    <ItemGroup Condition="'$(OS)' != 'Windows_NT'">
+        <Reference Include="Assembly-CSharp">
+            <HintPath>../../../Documents/SCPRefrences/Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp-firstpass">
+            <HintPath>../../../Documents/SCPRefrences/Assembly-CSharp-firstpass.dll</HintPath>
+        </Reference>
+        <Reference Include="Mirror">
+            <HintPath>../../../Documents/SCPRefrences/Mirror.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine">
+            <HintPath>../../../Documents/SCPRefrences/UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>../../../Documents/SCPRefrences/UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PhysicsModule">
+            <HintPath>../../../Documents/SCPRefrences/UnityEngine.PhysicsModule.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <!-- Imported Windows References -->
+    <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
+        <!-- Add Windows-specific references here -->
     </ItemGroup>
 
 </Project>
